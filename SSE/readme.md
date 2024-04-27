@@ -1,3 +1,7 @@
+## Introdução
+
+Este projeto consiste em um sistema simples para contar e exibir o número de visitas em uma página da web em tempo real. Ele utiliza Server-Sent Events (SSE) para enviar atualizações do contador de visitas do servidor para o cliente.
+
 ## Manul de Uso
 
 **1.Rodar o Arquivo JS**: Rode o arquivo com o seguinte comando 'node server.js'
