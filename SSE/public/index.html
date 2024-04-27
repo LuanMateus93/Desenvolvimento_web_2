@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Visitas em Tempo Real</title>
+    <script src="/server.js"></script>
+</head>
+<body>
+    <h1>Contador de Visitas em Tempo Real</h1>
+    <div id="visit-count"></div>
+
+    <script>
+        // Função para atualizar o contador de visitas na página
+        function updateVisitCount(count) {
+            document.getElementById('visit-count').innerText = `Total de visitas: ${count}`;
+        }
+
+        // Estabelecer conexão SSE
+        const eventSource = new EventSource('/visit-count');
+
+        // Lidar com as mensagens SSE
+        eventSource.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            updateVisitCount(data.count);
+        };
+
+        // Lidar com erros de conexão SSE
+        eventSource.onerror = function(error) {
+            console.error('Erro na conexão SSE:', error);
+        };
+    </script>
+</body>
+</html>
